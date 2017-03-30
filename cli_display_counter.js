@@ -1,7 +1,8 @@
 var counter = 0,
     turnArounds = 0,
-    inProgressSymbols = ['\u2B12', '\u2B14', '\u2B13', '\u2B15'],
-    inProgress = "In progress";
+    inProgressSymbols = ['\u25DC', '\u25DD', '\u25DE', '\u25DF', '\u25CB'],
+    inProgressText = "In progress",
+    inProgress = inProgressText;
 
 function lorem() {
     process.stdout.write(`${inProgress} ${inProgressSymbols[counter]}\r`);
@@ -9,7 +10,9 @@ function lorem() {
     if (counter > 3) {
         counter = 0;
         turnArounds++;
-        if (!Boolean(turnArounds%3)) inProgress = `${inProgress} ${inProgressSymbols[counter]}`;
+        if (turnArounds%3 === 0) {
+            inProgress = `${inProgress} ${inProgressSymbols[4]}`;
+        }
     }
     setTimeout(lorem, 100);
 }
